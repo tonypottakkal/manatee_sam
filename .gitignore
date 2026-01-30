@@ -139,6 +139,7 @@ results/
 *.jpg
 *.jpeg
 !sample_images/
+!sample_images/*.png
 
 # Temporary files
 tmp/
