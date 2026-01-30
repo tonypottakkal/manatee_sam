@@ -1,0 +1,59 @@
+# Default configuration for Manatee Segmentation System
+
+# SAM Model Configuration
+sam:
+  model_type: "vit_h"  # Options: vit_h, vit_l, vit_b
+  checkpoint_path: null  # Path to model checkpoint, null for auto-download
+  device: "auto"  # Options: auto, cpu, cuda, mps
+  
+# Segmentation Parameters
+segmentation:
+  min_mask_area: 1000  # Minimum area for valid masks (pixels)
+  max_masks: 50  # Maximum number of masks to generate
+  stability_score_thresh: 0.95  # Stability score threshold for mask filtering
+  box_nms_thresh: 0.7  # NMS threshold for bounding box filtering
+
+# Waterline Detection
+waterline:
+  enabled: true
+  hsv_water_ranges:
+    hue: [100, 130]  # Blue-green water hues
+    saturation: [50, 255]
+    value: [50, 255]
+  edge_detection:
+    low_threshold: 50
+    high_threshold: 150
+  hough_lines:
+    rho: 1
+    theta_resolution: 180  # Number of theta divisions
+    threshold: 100
+    min_line_length: 100
+    max_line_gap: 10
+
+# Reflection Filtering
+reflection_filter:
+  enabled: true
+  symmetry_threshold: 0.7  # Minimum symmetry score for reflection detection
+  color_similarity_threshold: 0.8  # Color similarity threshold
+  morphology:
+    kernel_size: 5
+    iterations: 2
+
+# Output Configuration
+output:
+  format: "png"
+  compression_level: 6  # PNG compression level (0-9)
+  preserve_dimensions: true
+
+# Quality Validation
+quality:
+  min_confidence: 0.5  # Minimum confidence for automatic acceptance
+  coherence_threshold: 0.8  # Minimum coherence score for valid masks
+  flag_for_review_threshold: 0.3  # Below this, flag for manual review
+
+# Logging
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  save_to_file: false
+  log_file: "logs/segmentation.log"

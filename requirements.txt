@@ -1,0 +1,22 @@
+# Core dependencies for manatee segmentation system
+segment-anything>=1.0
+torch>=2.0.0
+torchvision>=0.15.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+Pillow>=10.0.0
+scikit-image>=0.21.0
+
+# For waterline detection and image processing
+scipy>=1.11.0
+matplotlib>=3.7.0
+
+# For testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+hypothesis>=6.82.0
+
+# For configuration and utilities
+pyyaml>=6.0
+click>=8.1.0
+tqdm>=4.65.0
